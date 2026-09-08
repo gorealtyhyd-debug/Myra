@@ -1,3 +1,5 @@
+"use client";
+
 import Amenities from "./components/Amenities";
 import EnquiryProvider from "./components/EnquiryProvider";
 import FAQ from "./components/FAQ";

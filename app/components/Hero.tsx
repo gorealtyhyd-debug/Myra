@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="flex items-center gap-3.5">
           <span className="block h-px w-[46px] bg-paper" />
           <span className="text-[11px] uppercase tracking-[0.34em]">
-            {site.city} · Now open for early buyers
+            Myra Homes · {site.city} · Dundigal
           </span>
         </div>
 
@@ -41,9 +41,8 @@ export default function Hero() {
         </h1>
 
         <p className="max-w-[52ch] text-[clamp(15px,1.2vw,19px)] leading-[1.7] text-paper/[0.92]">
-          269 G+2 independent villas — 4BHK with a private home theatre —
-          across 24 acres, with a G+4 clubhouse and more than a hundred
-          amenities.
+          Myra Eloria by Myra Homes — 269 independent G+2 villas across 24 acres in {site.city},
+          each with 4BHK and a private home theatre, paired with a G+4 clubhouse and 100+ amenities.
         </p>
 
         <div className="flex max-w-[640px] flex-wrap items-stretch bg-paper text-olive">

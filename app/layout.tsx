@@ -10,22 +10,31 @@ import { site } from "./lib/data";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Premium 4BHK Villas in ${site.city} by ${site.developer}`,
-    template: `%s — ${site.name}`,
+    default: "Myra Eloria | Myra Homes — Luxury 4BHK Villas in Hyderabad",
+    template: "%s — Myra Eloria | Myra Homes",
   },
   description: site.description,
   keywords: [
-    "Eloria villas",
-    "Hyderabad villas",
-    "4BHK villas Hyderabad",
+    "Myra Homes",
+    "Myra",
+    "Myra Eloria",
+    "Myra Infra",
+    "Myra Infra & Developers",
+    "Myra Homes Hyderabad",
+    "Myra villas",
+    "Myra Eloria villas",
+    "Eloria by Myra",
+    "Eloria Villas",
+    "Eloria Hyderabad",
+    "4BHK luxury villas Hyderabad",
     "gated villa community Hyderabad",
-    "Myra Infra Developers",
-    "independent villas Hyderabad",
-    "luxury villas for sale Hyderabad",
+    "villas near ORR exit 5",
+    "dundigal luxury villas",
+    "independent luxury villas Hyderabad",
   ],
-  authors: [{ name: site.developer }],
-  creator: site.developer,
-  publisher: site.developer,
+  authors: [{ name: "Myra Homes (Myra Infra & Developers)" }],
+  creator: "Myra Homes",
+  publisher: "Myra Infra & Developers",
   alternates: {
     canonical: "/",
   },
@@ -37,27 +46,34 @@ export const metadata: Metadata = {
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "max-video-preview": -1,
     },
+  },
+  other: {
+    "geo.region": "IN-TG",
+    "geo.placename": "Hyderabad",
+    "geo.position": `${site.lat};${site.lng}`,
+    ICBM: `${site.lat}, ${site.lng}`,
   },
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: site.url,
-    siteName: `${site.name} by ${site.developer}`,
-    title: `${site.name} — Premium 4BHK Villas in ${site.city}`,
+    siteName: "Myra Homes — Myra Eloria Villas",
+    title: "Myra Eloria | Luxury 4BHK Villas in Hyderabad by Myra Homes",
     description: site.description,
     images: [
       {
         url: "/images/hero.jpg",
         width: 1600,
         height: 1000,
-        alt: `${site.name} — tree-lined villa avenue at dusk`,
+        alt: "Myra Eloria by Myra Homes — tree-lined villa avenue at dusk",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Premium 4BHK Villas in ${site.city}`,
+    title: "Myra Eloria | Luxury 4BHK Villas in Hyderabad by Myra Homes",
     description: site.description,
     images: ["/images/hero.jpg"],
   },
@@ -65,26 +81,49 @@ export const metadata: Metadata = {
 
 // JSON-LD structured data: helps both classic search engines and
 // generative / AI answer engines (ChatGPT, Perplexity, Google AI
-// Overviews, Claude) understand and cite this page accurately (GEO).
+// Overviews, Claude) understand and rank this page for Myra Homes, Myra & Myra Eloria.
 function StructuredData() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "RealEstateAgent",
+        "@type": ["Organization", "RealEstateAgent"],
         "@id": `${site.url}/#organization`,
-        name: site.developer,
+        name: "Myra Homes",
+        legalName: "Myra Infra & Developers",
+        alternateName: [
+          "Myra",
+          "Myra Homes Hyderabad",
+          "Myra Infra",
+          "Myra Infra & Developers",
+          "Myra Developers",
+        ],
         url: site.url,
+        logo: `${site.url}/images/logo.jpg`,
         image: `${site.url}/images/logo.jpg`,
+        description:
+          "Myra Homes (Myra Infra & Developers) — leading luxury residential property developer in Hyderabad, creators of Myra Eloria gated villa community.",
         areaServed: {
           "@type": "City",
           name: site.city,
+        },
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: site.city,
+          addressRegion: "Telangana",
+          addressCountry: "IN",
         },
       },
       {
         "@type": "Residence",
         "@id": `${site.url}/#residence`,
-        name: `${site.name} — ${site.developer}`,
+        name: "Myra Eloria",
+        alternateName: [
+          "Myra Eloria Villas",
+          "Eloria by Myra Homes",
+          "Eloria Villas",
+          "Myra Homes Eloria",
+        ],
         description: site.description,
         url: site.url,
         image: [
@@ -117,7 +156,7 @@ function StructuredData() {
         ].map((name) => ({ "@type": "LocationFeatureSpecification", name })),
         containedInPlace: {
           "@type": "Place",
-          name: `${site.name} — 24 acre gated community, 269 villas`,
+          name: "Myra Eloria — 24 acre gated community, 269 villas",
         },
         offers: {
           "@type": "AggregateOffer",
@@ -134,26 +173,42 @@ function StructuredData() {
         mainEntity: [
           {
             "@type": "Question",
-            name: "What is Eloria and where is it located?",
+            name: "What is Myra Eloria by Myra Homes?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Eloria is a 24-acre gated villa community by Myra Infra & Developers, located in Hyderabad's western growth corridor. It comprises 269 independent G+2 villas around a G+4 clubhouse.",
+              text: "Myra Eloria is an ultra-luxury 24-acre gated villa community in Hyderabad developed by Myra Homes (Myra Infra & Developers), comprising 269 independent G+2 4BHK standalone villas with a private home theatre and a G+4 clubhouse.",
             },
           },
           {
             "@type": "Question",
-            name: "What is the starting price of villas at Eloria?",
+            name: "Who is the developer of Eloria Villas?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Villas at Eloria start at ₹2.10 Cr onwards at launch pricing (₹6,999 per sft for a 200 Sq. Yds / 3,238 SFT unit). An all-inclusive rate of ₹8,500 per sft is also available.",
+              text: "Eloria is developed by Myra Homes (Myra Infra & Developers), one of Hyderabad's prominent luxury real estate developers.",
             },
           },
           {
             "@type": "Question",
-            name: "What villa configurations are available at Eloria?",
+            name: "Where is Myra Eloria located?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "All villas at Eloria are G+2, 4BHK homes with a dedicated home theatre, across five plot sizes from 200 to 300 Sq. Yds (3,238 to 4,427 SFT built-up).",
+              text: "Myra Eloria is situated in Hyderabad's western growth corridor, just minutes from ORR Exit 5, offering smooth connectivity to Miyapur, Hitec City and the Financial District.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What is the starting price of villas at Myra Eloria?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Villas at Myra Eloria start at ₹2.10 Cr onwards at launch pricing (₹6,999 per sft for a 200 Sq. Yds / 3,238 SFT unit).",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What villa configurations are available at Myra Eloria?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "All villas at Myra Eloria are G+2, 4BHK homes with a dedicated private home theatre, across plot sizes from 200 to 300 Sq. Yds (3,238 to 4,427 SFT built-up).",
             },
           },
         ],
@@ -162,7 +217,8 @@ function StructuredData() {
         "@type": "WebSite",
         "@id": `${site.url}/#website`,
         url: site.url,
-        name: `${site.name} — ${site.developer}`,
+        name: "Myra Homes — Myra Eloria Official Website",
+        alternateName: ["Myra Homes", "Myra Eloria", "Myra", "Myra Infra"],
         publisher: { "@id": `${site.url}/#organization` },
       },
     ],
@@ -184,20 +240,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-IN">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap"
-        />
-        <StructuredData />
-      </head>
       <body className="bg-paper font-sans text-olive antialiased">
+        <StructuredData />
         {children}
       </body>
     </html>

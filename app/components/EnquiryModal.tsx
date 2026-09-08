@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { budgetOptions, site, unitTypeOptions } from "../lib/data";
+import { submitLeadToPrivyr } from "../lib/privyr";
 
 type Props = {
   isOpen: boolean;
@@ -20,6 +21,20 @@ export default function EnquiryModal({
   onSubmitted,
 }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null);
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [mail, setMail] = useState("");
+  const [unitType, setUnitType] = useState(prefillUnit ?? unitTypeOptions[0]);
+  const [budget, setBudget] = useState(budgetOptions[0]);
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (prefillUnit) {
+      setUnitType(prefillUnit);
+    }
+  }, [prefillUnit]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -33,6 +48,39 @@ export default function EnquiryModal({
       document.body.style.overflow = "";
     };
   }, [isOpen, onClose]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    try {
+      const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+      const result = await submitLeadToPrivyr({
+        name,
+        phone: number,
+        email: mail,
+        unitType,
+        budgetRange: budget,
+        message,
+        source: "Eloria Website - Enquiry Modal",
+        utm_source: urlParams?.get("utm_source") || "",
+        utm_medium: urlParams?.get("utm_medium") || "",
+        utm_campaign: urlParams?.get("utm_campaign") || "",
+      });
+
+      if (result.success) {
+        onSubmitted();
+      } else {
+        setErrorMessage(result.message || "Could not submit enquiry. Please check your network and try again.");
+      }
+    } catch (err) {
+      console.error("Submission failed:", err);
+      setErrorMessage("Could not submit enquiry. Please check your network and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -95,18 +143,19 @@ export default function EnquiryModal({
             </button>
           </div>
         ) : (
-          <form
-            className="flex flex-col gap-4"
-            onSubmit={(e) => {
-              e.preventDefault();
-              onSubmitted();
-            }}
-          >
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            {errorMessage && (
+              <div className="border border-red-500/40 bg-red-50 p-3 text-xs text-red-700">
+                {errorMessage}
+              </div>
+            )}
             <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-olive-mid">
               Name
               <input
                 type="text"
                 required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Your full name"
                 className="w-full border border-olive/28 bg-paper px-3.5 py-3 font-sans text-[15px] normal-case tracking-normal text-olive outline-none focus:border-olive"
               />
@@ -118,6 +167,8 @@ export default function EnquiryModal({
                 <input
                   type="tel"
                   required
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
                   placeholder="+91 00000 00000"
                   className="w-full border border-olive/28 bg-paper px-3.5 py-3 font-sans text-[15px] normal-case tracking-normal text-olive outline-none focus:border-olive"
                 />
@@ -127,6 +178,8 @@ export default function EnquiryModal({
                 <input
                   type="email"
                   required
+                  value={mail}
+                  onChange={(e) => setMail(e.target.value)}
                   placeholder="you@example.com"
                   className="w-full border border-olive/28 bg-paper px-3.5 py-3 font-sans text-[15px] normal-case tracking-normal text-olive outline-none focus:border-olive"
                 />
@@ -136,20 +189,25 @@ export default function EnquiryModal({
             <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-olive-mid">
               Unit type
               <select
-                defaultValue={prefillUnit ?? unitTypeOptions[0]}
+                value={unitType}
+                onChange={(e) => setUnitType(e.target.value)}
                 className="w-full border border-olive/28 bg-paper px-3.5 py-3 font-sans text-[15px] normal-case tracking-normal text-olive outline-none focus:border-olive"
               >
                 {unitTypeOptions.map((o) => (
-                  <option key={o}>{o}</option>
+                  <option key={o} value={o}>{o}</option>
                 ))}
               </select>
             </label>
 
             <label className="flex flex-col gap-2 text-[10px] uppercase tracking-[0.22em] text-olive-mid">
               Budget range
-              <select className="w-full border border-olive/28 bg-paper px-3.5 py-3 font-sans text-[15px] normal-case tracking-normal text-olive outline-none focus:border-olive">
+              <select
+                value={budget}
+                onChange={(e) => setBudget(e.target.value)}
+                className="w-full border border-olive/28 bg-paper px-3.5 py-3 font-sans text-[15px] normal-case tracking-normal text-olive outline-none focus:border-olive"
+              >
                 {budgetOptions.map((o) => (
-                  <option key={o}>{o}</option>
+                  <option key={o} value={o}>{o}</option>
                 ))}
               </select>
             </label>
@@ -158,6 +216,8 @@ export default function EnquiryModal({
               Message
               <textarea
                 rows={3}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 placeholder="Anything you'd like us to know"
                 className="w-full resize-y border border-olive/28 bg-paper px-3.5 py-3 font-sans text-[15px] normal-case tracking-normal text-olive outline-none focus:border-olive"
               />
@@ -165,9 +225,10 @@ export default function EnquiryModal({
 
             <button
               type="submit"
-              className="mt-2 rounded-full bg-olive px-7 py-4 text-xs uppercase tracking-widest2 text-paper transition-colors hover:bg-olive-dark"
+              disabled={isSubmitting}
+              className="mt-2 flex items-center justify-center rounded-full bg-olive px-7 py-4 text-xs uppercase tracking-widest2 text-paper transition-colors hover:bg-olive-dark disabled:opacity-60"
             >
-              Submit enquiry
+              {isSubmitting ? "Submitting..." : "Submit enquiry"}
             </button>
             <span className="text-[11px] leading-relaxed text-olive-mid">
               By submitting you agree to be contacted by {site.developer}{" "}

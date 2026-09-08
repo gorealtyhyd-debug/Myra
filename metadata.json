@@ -1,0 +1,6 @@
+{
+  "name": "Eloria Villas",
+  "description": "Premium 4BHK gated villa community in Hyderabad by Myra Infra & Developers",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

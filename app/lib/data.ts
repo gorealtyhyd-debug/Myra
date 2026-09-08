@@ -2,13 +2,18 @@
 
 export const site = {
   name: "Eloria",
+  brandName: "Myra Eloria",
   developer: "Myra Infra & Developers",
-  tagline: "Premium villa community",
+  developerBrand: "Myra Homes",
+  tagline: "Ultra-luxury villas by Myra Homes",
   city: "Hyderabad",
   description:
-    "Eloria is a 24-acre gated villa community in Hyderabad by Myra Infra & Developers — 269 independent G+2, 4BHK villas with a private home theatre, a G+4 clubhouse and 100+ amenities. Villas start at ₹2.10 Cr.",
+    "Myra Eloria by Myra Homes (Myra Infra & Developers) — 24-acre gated villa community in Hyderabad with 269 independent G+2 4BHK villas, private home theatre, G+4 clubhouse and 100+ amenities. Villas start at ₹2.10 Cr.",
   url: "https://www.eloriavillas.com",
   phone: "+91-00000-00000",
+  crmWebhookUrl:
+    process.env.NEXT_PUBLIC_CRM_WEBHOOK_URL ||
+    "https://www.privyr.com/api/v1/incoming-leads/qD4I962k/S2u8K9T5#generic-webhook",
   lat: 17.517389,
   lng: 78.217041,
 };

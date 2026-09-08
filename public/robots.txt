@@ -1,0 +1,19 @@
+# Crawlers & Search Engines directive for Myra Homes / Myra Eloria
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /images/*
+Allow: /_next/static/
+
+# Explicit search bot directives
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# XML Sitemap location
+Sitemap: https://www.eloriavillas.com/sitemap.xml
