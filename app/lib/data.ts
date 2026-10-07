@@ -8,8 +8,8 @@ export const site = {
   tagline: "Ultra-luxury villas by Myra Homes",
   city: "Hyderabad",
   description:
-    "Myra Eloria by Myra Homes (Myra Infra & Developers) — 24-acre gated villa community in Hyderabad with 269 independent G+2 4BHK villas, private home theatre, G+4 clubhouse and 100+ amenities. Villas start at ₹2.10 Cr.",
-  url: "https://www.eloriavillas.com",
+    "Myra Eloria by Myra Homes (Myra Infra & Developers) — 24-acre gated villa community in Hyderabad with 269 independent G+2 4BHK villas, private home theatre, G+4 clubhouse and 100+ amenities. Villas start at ₹2.75 Cr onwards (Launching price ₹9,999/- per sft with EOI benefits).",
+  url: "https://myrabyeloria.in",
   phone: "+91-00000-00000",
   crmWebhookUrl:
     process.env.NEXT_PUBLIC_CRM_WEBHOOK_URL ||
@@ -117,8 +117,8 @@ export const villas = [
 ];
 
 export const rates = [
-  { label: "₹6,999 / sft", rate: 6999 },
-  { label: "₹8,500 / sft", rate: 8500 },
+  { label: "Launching: ₹9,999 / sft", rate: 9999 },
+  { label: "EOI (₹8,500 / sft)", rate: 8500 },
 ];
 
 export const floorPlans = [
@@ -152,10 +152,10 @@ export const unitTypeOptions = [
 ];
 
 export const budgetOptions = [
-  "₹2.00 – 2.50 Cr",
-  "₹2.50 – 3.00 Cr",
-  "₹3.00 – 3.50 Cr",
-  "₹3.50 Cr and above",
+  "₹2.75 – 3.25 Cr",
+  "₹3.25 – 3.75 Cr",
+  "₹3.75 – 4.25 Cr",
+  "₹4.25 Cr and above",
   "Open — advise me",
 ];
 
@@ -170,7 +170,7 @@ export const faqs = [
   },
   {
     q: "What is the starting price of villas at Eloria?",
-    a: "Villas at Eloria start at ₹2.10 Cr onwards at launch pricing, based on ₹6,999 per sft for a 200 Sq. Yds / 3,238 SFT unit. An all-inclusive rate of ₹8,500 per sft is also available with no separate charges.",
+    a: "Villas at Eloria start at ₹2.75 Cr onwards for a 200 Sq. Yds / 3,238 SFT unit (launching price ₹9,999/- per sft), with exclusive EOI (Expression of Interest) priority pricing and benefits available during the pre-launch phase.",
   },
   {
     q: "What amenities does Eloria offer?",

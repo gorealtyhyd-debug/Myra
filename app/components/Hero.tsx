@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="flex items-center gap-3.5">
           <span className="block h-px w-[46px] bg-paper" />
           <span className="text-[11px] uppercase tracking-[0.34em]">
-            Myra Homes · {site.city} · Dundigal
+            Myra Homes · Myra by Eloria · {site.city}
           </span>
         </div>
 
@@ -38,11 +38,12 @@ export default function Hero() {
           A gated life,
           <br />
           <em className="italic">quietly</em> grand.
+          <span className="sr-only"> — Myra Eloria (Myra by Eloria), Luxury 4BHK Villas in Hyderabad by Myra Homes</span>
         </h1>
 
         <p className="max-w-[52ch] text-[clamp(15px,1.2vw,19px)] leading-[1.7] text-paper/[0.92]">
-          Myra Eloria by Myra Homes — 269 independent G+2 villas across 24 acres in {site.city},
-          each with 4BHK and a private home theatre, paired with a G+4 clubhouse and 100+ amenities.
+          Myra Eloria (Myra by Eloria) by Myra Homes — 269 independent G+2 4BHK villas across 24 acres in {site.city},
+          each with a private home theatre, paired with a G+4 clubhouse and 100+ amenities.
         </p>
 
         <div className="flex max-w-[640px] flex-wrap items-stretch bg-paper text-olive">
@@ -51,7 +52,7 @@ export default function Hero() {
               Villas starting at
             </span>
             <span className="font-sans text-[clamp(32px,3.8vw,46px)] font-light leading-none [font-feature-settings:'lnum'_1,'tnum'_1]">
-              ₹2.10 Cr
+              ₹2.75 Cr
               <span className="ml-2.5 text-xs uppercase tracking-[0.16em] text-olive-mid">
                 onwards
               </span>
@@ -62,10 +63,10 @@ export default function Hero() {
             style={{ flex: "0 1 220px" }}
           >
             <span className="text-[10px] uppercase tracking-[0.28em] text-paper/[0.72]">
-              Limited period
+              EOI Price · ₹8,500/-
             </span>
             <span className="text-sm leading-snug">
-              Amenity charges free at launching price
+              EOI open · Priority allotment for Early buyers
             </span>
           </div>
         </div>

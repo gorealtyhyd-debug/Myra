@@ -13,23 +13,22 @@ const pricingPlans = [
   {
     label: "Launching price",
     tag: "Limited period",
-    price: "₹6,999",
-    from: "Launch entry price ₹2.10 Cr · limited inventory",
+    price: "₹9,999/-",
+    from: `From ${formatCr(9999 * 3238)} · 200 Sq. Yds`,
     points: [
-      "Amenities charges: FREE",
-      "Limited period offer for early buyers",
+      "Amenities charges",
       "Alternate payment options discussed at the site visit",
     ],
     variant: "light" as const,
   },
   {
-    label: "All-inclusive price",
-    tag: "All inclusive",
-    price: "₹8,500",
+    label: "EOI",
+    tag: "Expression of Interest",
+    price: "₹8,500/-",
     from: `From ${formatCr(8500 * 3238)} · 200 Sq. Yds`,
     points: [
-      "Includes all additional charges",
-      "No separate amenity or infrastructure levy",
+      "Priority villa unit allotment & preference",
+      "Special pre-launch EOI window benefit",
       "Single-rate pricing, nothing to reconcile later",
     ],
     variant: "outline" as const,
@@ -204,9 +203,9 @@ export default function Pricing() {
               </div>
             </div>
             <span className="text-[11px] leading-relaxed text-paper/[0.62]">
-              Built-up area × rate only — the ₹2.10 Cr launch entry price
-              applies to limited inventory. Registration, GST and statutory
-              charges extra unless stated.
+              Built-up area × rate only — the ₹9,999/- per sft launch price
+              applies to limited inventory. Special EOI pre-launch terms apply.
+              Registration, GST and statutory charges extra unless stated.
             </span>
           </div>
         </div>

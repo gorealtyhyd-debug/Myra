@@ -10,14 +10,20 @@ import { site } from "./lib/data";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Myra Eloria | Myra Homes — Luxury 4BHK Villas in Hyderabad",
+    default: "Myra Eloria (Myra by Eloria) — Official Website | 4BHK Luxury Villas Hyderabad",
     template: "%s — Myra Eloria | Myra Homes",
   },
-  description: site.description,
+  description:
+    "Official website of Myra Eloria (Myra by Eloria) by Myra Homes. 24-acre gated community in Hyderabad with 269 luxury G+2 4BHK standalone villas, clubhouse & 100+ amenities. Villas starting at ₹2.75 Cr onwards (Launching price ₹9,999/- per sft with EOI benefits).",
   keywords: [
+    "Myra by Eloria",
+    "myrabyeloria.in",
+    "myrabyeloria",
+    "Myra Eloria",
+    "Myra Eloria official website",
+    "Myra Eloria Hyderabad",
     "Myra Homes",
     "Myra",
-    "Myra Eloria",
     "Myra Infra",
     "Myra Infra & Developers",
     "Myra Homes Hyderabad",
@@ -30,6 +36,7 @@ export const metadata: Metadata = {
     "gated villa community Hyderabad",
     "villas near ORR exit 5",
     "dundigal luxury villas",
+    "kollur villas",
     "independent luxury villas Hyderabad",
   ],
   authors: [{ name: "Myra Homes (Myra Infra & Developers)" }],
@@ -93,6 +100,7 @@ function StructuredData() {
         legalName: "Myra Infra & Developers",
         alternateName: [
           "Myra",
+          "Myra by Eloria",
           "Myra Homes Hyderabad",
           "Myra Infra",
           "Myra Infra & Developers",
@@ -119,6 +127,8 @@ function StructuredData() {
         "@id": `${site.url}/#residence`,
         name: "Myra Eloria",
         alternateName: [
+          "Myra by Eloria",
+          "myrabyeloria.in",
           "Myra Eloria Villas",
           "Eloria by Myra Homes",
           "Eloria Villas",
@@ -200,7 +210,7 @@ function StructuredData() {
             name: "What is the starting price of villas at Myra Eloria?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Villas at Myra Eloria start at ₹2.10 Cr onwards at launch pricing (₹6,999 per sft for a 200 Sq. Yds / 3,238 SFT unit).",
+              text: "Villas at Myra Eloria start at ₹2.75 Cr onwards for a 200 Sq. Yds / 3,238 SFT unit (Launching price ₹9,999/- per sft), with exclusive EOI (Expression of Interest) priority benefits available during the pre-launch phase.",
             },
           },
           {
@@ -217,8 +227,15 @@ function StructuredData() {
         "@type": "WebSite",
         "@id": `${site.url}/#website`,
         url: site.url,
-        name: "Myra Homes — Myra Eloria Official Website",
-        alternateName: ["Myra Homes", "Myra Eloria", "Myra", "Myra Infra"],
+        name: "Myra Eloria (Myra by Eloria) — Official Website",
+        alternateName: [
+          "Myra by Eloria",
+          "myrabyeloria.in",
+          "Myra Homes",
+          "Myra Eloria",
+          "Myra",
+          "Myra Infra",
+        ],
         publisher: { "@id": `${site.url}/#organization` },
       },
     ],
